@@ -12,10 +12,9 @@
 
 #include "Contact.class.hpp"
 
-Contact::Contact(std::string &tab)
+Contact::Contact()
 {
-    std::cout << "Construct Contact named " << tab[0] << std::end;
-
+    std::cout << "Construct instance" << std::endl;
 }
 
 Contact::~Contact()
@@ -28,4 +27,19 @@ std::string Contact::get_info(int info) const
     if (info)
         return "LALA";
     return NULL;
+}
+
+void Contact::set_info(std::string *tab)
+{
+    this->tab[FNAME] = tab[FNAME];
+    this->tab[LNAME] = tab[LNAME];
+    this->tab[NICKN] = tab[NICKN];
+    this->tab[LOGIN] = tab[LOGIN];
+    this->tab[ADDR] = tab[ADDR];
+    this->tab[MAIL] = tab[MAIL];
+    this->tab[PHONE] = tab[PHONE];
+    this->tab[BDATE] = tab[BDATE];
+    this->tab[PMEAL] = tab[PMEAL];
+    this->tab[UCOLOR] = tab[UCOLOR];
+    this->tab[SECRET] = tab[SECRET];
 }

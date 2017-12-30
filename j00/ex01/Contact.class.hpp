@@ -37,23 +37,14 @@
 class Contact
 {
 public:
-    Contact(std::string &tab);
+    Contact(void);
     ~Contact(void);
+    void set_info(std::string *tab);
     std::string get_info(int info) const;
 
 private:
-    // std::string _fName;
-    // std::string _lName;
-    // std::string _nickN;
-    // std::string _login;
-    // std::string _addr;
-    // std::string _mail;
-    // std::string _phone;
-    // std::string _bDate;
-    // std::string _pMeal;
-    // std::string _uColor;
-    // std::string _secret;
     std::string tab[11];
+    static int _index;
 };
 
 #endif

@@ -21,7 +21,7 @@ std::string take_line(std::string field)
     return (buf);
 }
 
-void add_contact(void)
+void add_contact(Contact *contact)
 {
     std::string tab[11];
 
@@ -36,7 +36,7 @@ void add_contact(void)
     tab[PMEAL] = take_line("Favorite meal : ");
     tab[UCOLOR] = take_line("underwear color : ");
     tab[SECRET] = take_line("Darkest secret : ");
-
+    contact->set_info(tab);
 }
 
 void search_contacts(void)
@@ -51,12 +51,18 @@ void _exit(void)
 
 int main(void)
 {
+    int i;
+    Contact contacts[8];
     std::string buf;
 
+    i = 0;
     while (std::getline(std::cin, buf))
     {
         if (buf == ADD)
-            add_contact();
+        {
+            add_contact(&contacts[i]);
+            ++i;
+        }
         else if (buf == SEARCH)
             search_contacts();
         else if (buf == EXIT)
