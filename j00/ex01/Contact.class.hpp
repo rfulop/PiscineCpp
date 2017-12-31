@@ -39,12 +39,13 @@ class Contact
 public:
     Contact(void);
     ~Contact(void);
-    void set_info(std::string *tab);
+    void set_info(std::string *tab, int index);
     std::string get_info(int info) const;
+    int get_index() const;
 
 private:
     std::string tab[11];
-    static int _index;
+    int _index;
 };
 
 #endif

@@ -29,7 +29,7 @@ std::string Contact::get_info(int info) const
     return NULL;
 }
 
-void Contact::set_info(std::string *tab)
+void Contact::set_info(std::string *tab, int index)
 {
     this->tab[FNAME] = tab[FNAME];
     this->tab[LNAME] = tab[LNAME];
@@ -42,4 +42,10 @@ void Contact::set_info(std::string *tab)
     this->tab[PMEAL] = tab[PMEAL];
     this->tab[UCOLOR] = tab[UCOLOR];
     this->tab[SECRET] = tab[SECRET];
+    this->_index = index + 1;
+}
+
+int Contact::get_index() const
+{
+    return (this->_index);
 }
