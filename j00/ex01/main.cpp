@@ -46,18 +46,18 @@ void add_contact(Contact *contact, int i)
 
 void print_contact(Contact *contact, int i)
 {
-    std::cout << "First name : " << contact[i].get_info(FNAME) << std::endl;
-    std::cout << "Last name : " << contact[i].get_info(LNAME) << std::endl;
-    std::cout << "Nickname : " << contact[i].get_info(NICKN) << std::endl;
-    std::cout << "Login : " << contact[i].get_info(LOGIN) << std::endl;
-    std::cout << "Post address : " << contact[i].get_info(ADDR) << std::endl;
-    std::cout << "Email address : " << contact[i].get_info(MAIL) << std::endl;
-    std::cout << "Phone number : " << contact[i].get_info(PHONE) << std::endl;
-    std::cout << "Birthday date : " << contact[i].get_info(BDATE) << std::endl;
-    std::cout << "Favorite meal : " << contact[i].get_info(PMEAL) << std::endl;
-    std::cout << "Underwear color : " << contact[i].get_info(UCOLOR) << std::endl;
-    std::cout << "Darkest secret : " << contact[i].get_info(SECRET) << std::endl;
-    std::cout << std::endl;
+    std::cout << "First name : " << contact[i].get_info(FNAME) << std::endl
+    << "Last name : " << contact[i].get_info(LNAME) << std::endl
+    << "Nickname : " << contact[i].get_info(NICKN) << std::endl
+    << "Login : " << contact[i].get_info(LOGIN) << std::endl
+    << "Post address : " << contact[i].get_info(ADDR) << std::endl
+    << "Email address : " << contact[i].get_info(MAIL) << std::endl
+    << "Phone number : " << contact[i].get_info(PHONE) << std::endl
+    << "Birthday date : " << contact[i].get_info(BDATE) << std::endl
+    << "Favorite meal : " << contact[i].get_info(PMEAL) << std::endl
+    << "Underwear color : " << contact[i].get_info(UCOLOR) << std::endl
+    << "Darkest secret : " << contact[i].get_info(SECRET) << std::endl
+    << std::endl;
 
 }
 
@@ -70,12 +70,12 @@ void search_contacts(Contact *contact)
     i = 0;
     if (!contact[i].get_info(FNAME).empty())
     {
-        std::cout << SEP;
-        std::cout << std::right << std::setw(10) << "Index" << SEP;
-        std::cout << std::right << std::setw(10) << "First name" << SEP;
-        std::cout << std::right << std::setw(10) << "Last name" << SEP;
-        std::cout << std::right << std::setw(10) << "Nickname";
-        std::cout << SEP << std::endl;
+        std::cout << SEP
+        << std::right << std::setw(10) << "Index" << SEP
+        << std::right << std::setw(10) << "First name" << SEP
+        << std::right << std::setw(10) << "Last name" << SEP
+        << std::right << std::setw(10) << "Nickname"
+        << SEP << std::endl;
     }
     else
     {
