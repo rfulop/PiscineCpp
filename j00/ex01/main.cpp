@@ -25,6 +25,11 @@ void add_contact(Contact *contact, int i)
 {
     std::string tab[11];
 
+    if (i > MAX_CONTACTS - 1)
+    {
+        std::cout << "No space left. You already has 8 contacts." << std::endl;
+        return ;
+    }
     tab[FNAME] = take_line("First name : ");
     tab[LNAME] = take_line("Last name : ");
     tab[NICKN] = take_line("Nickname : ");
@@ -36,31 +41,90 @@ void add_contact(Contact *contact, int i)
     tab[PMEAL] = take_line("Favorite meal : ");
     tab[UCOLOR] = take_line("underwear color : ");
     tab[SECRET] = take_line("Darkest secret : ");
-    contact->set_info(tab, i);
+    contact->set_info(tab);
+}
+
+void print_contact(Contact *contact, int i)
+{
+    std::cout << "First name : " << contact[i].get_info(FNAME) << std::endl;
+    std::cout << "Last name : " << contact[i].get_info(LNAME) << std::endl;
+    std::cout << "Nickname : " << contact[i].get_info(NICKN) << std::endl;
+    std::cout << "Login : " << contact[i].get_info(LOGIN) << std::endl;
+    std::cout << "Post address : " << contact[i].get_info(ADDR) << std::endl;
+    std::cout << "Email address : " << contact[i].get_info(MAIL) << std::endl;
+    std::cout << "Phone number : " << contact[i].get_info(PHONE) << std::endl;
+    std::cout << "Birthday date : " << contact[i].get_info(BDATE) << std::endl;
+    std::cout << "Favorite meal : " << contact[i].get_info(PMEAL) << std::endl;
+    std::cout << "Underwear color : " << contact[i].get_info(UCOLOR) << std::endl;
+    std::cout << "Darkest secret : " << contact[i].get_info(SECRET) << std::endl;
+    std::cout << std::endl;
+
 }
 
 void search_contacts(Contact *contact)
 {
     int i;
-    std::cout << "Search contact" << std::endl;
+    int len;
+    int pick;
 
     i = 0;
-    while (contact[i].get_index())
+    if (!contact[i].get_info(FNAME).empty())
     {
-        std::cout << "Index = " << contact[i].get_index() << std::endl;
+        std::cout << SEP;
+        std::cout << std::right << std::setw(10) << "Index" << SEP;
+        std::cout << std::right << std::setw(10) << "First name" << SEP;
+        std::cout << std::right << std::setw(10) << "Last name" << SEP;
+        std::cout << std::right << std::setw(10) << "Nickname";
+        std::cout << SEP << std::endl;
+    }
+    else
+    {
+        std::cout << "No contact yet." << std::endl << std::endl;
+        return ;
+    }
+    while (!contact[i].get_info(FNAME).empty() && i < MAX_CONTACTS)
+    {
+        std::cout << SEP;
+        std::cout << std::right << std::setw(10) << i + 1 << SEP;
+        len = contact[i].get_info(FNAME).length();
+        if (len > 9)
+            std::cout << std::right << std::setw(10) << contact[i].get_info(FNAME).replace(9, len, ".") << SEP;
+        else
+            std::cout << std::right << std::setw(10) << contact[i].get_info(FNAME) << SEP;
+        len = contact[i].get_info(LNAME).length();
+        if (len > 9)
+            std::cout << std::right << std::setw(10) << contact[i].get_info(LNAME).replace(9, len, ".") << SEP;
+        else
+            std::cout << std::right << std::setw(10) << contact[i].get_info(LNAME) << SEP;
+        len = contact[i].get_info(NICKN).length();
+        if (len > 9)
+            std::cout << std::right << std::setw(10) << contact[i].get_info(NICKN).replace(9, len, ".") << SEP;
+        else
+            std::cout << std::right << std::setw(10) << contact[i].get_info(NICKN) << SEP << std::endl;
         ++i;
      }
-}
-
-void _exit(void)
-{
-    std::cout << "Exit" << std::endl;
+     pick = 0;
+     do
+    {
+        std::cout << "Pick the index of the contact you want to display : ";
+        std::cin >> pick;
+        std::cout << std::endl;
+        if (std::cin.fail())
+        {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+        --pick;
+        if (pick < 0 || pick >= i)
+            std::cout << "This index does not exist." << std::endl;
+    } while (pick < 0 || pick >= i);
+    print_contact(contact, pick);
 }
 
 int main(void)
 {
     int i;
-    Contact contacts[8];
+    Contact contacts[MAX_CONTACTS];
     std::string buf;
 
     i = 0;
@@ -74,9 +138,10 @@ int main(void)
         else if (buf == SEARCH)
             search_contacts(contacts);
         else if (buf == EXIT)
-            _exit();
-        else
-            ;
+        {
+            std::cout << "All contacts are destroy." << std::endl;
+            exit(0);
+        }
     }
     return (0);
 }

@@ -14,22 +14,30 @@
 
 Contact::Contact()
 {
-    std::cout << "Construct instance" << std::endl;
+    ++nbContact;
+    if (nbContact == MAX_CONTACTS)
+    {
+        std::cout << "Welcome on iContact ! " << std::endl;
+        std::cout << "ADD: Set contact." << std::endl;
+        std::cout << "SEARCH : Display contacts." << std::endl;
+        std::cout << "EXIT : Leave program." << std::endl;
+        std::cout << std::endl;
+    }
 }
 
 Contact::~Contact()
 {
-
+    --nbContact;
+    if (!nbContact)
+        std::cout << "All contacts are destroy." << std::endl;
 }
 
-std::string Contact::get_info(int info) const
+std::string Contact::get_info(int field) const
 {
-    if (info)
-        return "LALA";
-    return NULL;
+    return (this->tab[field]);
 }
 
-void Contact::set_info(std::string *tab, int index)
+void Contact::set_info(std::string *tab)
 {
     this->tab[FNAME] = tab[FNAME];
     this->tab[LNAME] = tab[LNAME];
@@ -42,10 +50,6 @@ void Contact::set_info(std::string *tab, int index)
     this->tab[PMEAL] = tab[PMEAL];
     this->tab[UCOLOR] = tab[UCOLOR];
     this->tab[SECRET] = tab[SECRET];
-    this->_index = index + 1;
 }
 
-int Contact::get_index() const
-{
-    return (this->_index);
-}
+int Contact::nbContact = 0;

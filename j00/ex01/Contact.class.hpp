@@ -21,6 +21,9 @@
 #define ADD "ADD"
 #define SEARCH "SEARCH"
 #define EXIT "EXIT"
+#define SEP "|"
+
+#define MAX_CONTACTS 8
 
 #define FNAME 0
 #define LNAME 1
@@ -39,13 +42,13 @@ class Contact
 public:
     Contact(void);
     ~Contact(void);
-    void set_info(std::string *tab, int index);
-    std::string get_info(int info) const;
-    int get_index() const;
+    void set_info(std::string *tab);
+    std::string get_info(int field) const;
+    int get_nb_contact() const;
 
 private:
     std::string tab[11];
-    int _index;
+    static int nbContact;
 };
 
 #endif
