@@ -15,10 +15,12 @@
 Zombie::Zombie(std::string name, std::string type)
 : _name(name), _type(type)
 {
+    announce();
 }
 
 Zombie::~Zombie(void)
 {
+    std::cout << "Zombie " << _name << " is dead :)" << std::endl;
 }
 
 void Zombie::announce(void) const

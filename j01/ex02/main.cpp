@@ -10,31 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <stdlib.h>
-# include <fcntl.h>
-# include <unistd.h>
-# include <stddef.h>
-#include <iostream>
-
-
-const char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+#include "Zombie.hpp"
+#include "ZombieEvent.hpp"
 
 int main(void)
 {
-    char z;
-    uint64_t rdd;
-    int fd;
-    char fc[256];
+    ZombieEvent *event = new ZombieEvent();
+    Zombie zomb1("jack", "Final Boss");
 
-    fd = open("/dev/urandom", O_RDONLY);
-    read(fd, &rdd, sizeof(rdd));
-    srand(rdd);
-    fc[255] = 0;
-    for (int i = 0; i < 15; i++)
-    {
-        z = alphabet[rand() % sizeof(alphabet)];
-        std::cout << (char)z;
-    }
-    std::cout << std::endl;
-    close(fd);
+    event->setZombieType("Peon");
+
+    Zombie *zomb2 = event->newZombie("Brahim");
+
+    Zombie *zomb3 = event->randomChump();
+    delete zomb2;
+    delete zomb3;
+    delete event;
+    return (0);
 }

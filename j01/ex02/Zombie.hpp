@@ -6,7 +6,7 @@
 /*   By: rfulop <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 02:45:50 by rfulop            #+#    #+#             */
-/*   Updated: 2018/01/03 02:45:51 by rfulop           ###   ########.fr       */
+/*   Updated: 2018/01/03 07:08:35 by rfulop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 class Zombie
 {
 public:
-    Zombie();
+    Zombie(std::string name, std::string type);
     ~Zombie();
     void announce(void) const;
 

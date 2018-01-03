@@ -14,6 +14,10 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stddef.h>
+#include "ZombieEvent.hpp"
+#include "Zombie.hpp"
+
+const char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
 ZombieEvent::ZombieEvent(void)
 {
@@ -29,26 +33,29 @@ void ZombieEvent::setZombieType(std::string type)
 
 Zombie* ZombieEvent::newZombie(std::string name)
 {
-    Zombie *newZombie = new Zombie(name);
-    return newZombie;
+    Zombie *zomb = new Zombie(name, _type);
+    return zomb;
+}
+
+std::string ZombieEvent::randStr(void)
+{
+    char z;
+    uint64_t rdd;
+    int fd;
+    int size;
+    std::string fc;
+
+    fd = open("/dev/urandom", O_RDONLY);
+    read(fd, &rdd, sizeof(rdd));
+    srand(rdd);
+    size = rand() % 8 + 8;
+    for (int i = 0; i < size; i++)
+        fc += alphabet[rand() % sizeof(alphabet)];
+    close(fd);
+    return fc;
 }
 
 Zombie* ZombieEvent::randomChump(void)
 {
-    uint8_t z;
-    int fd;
-    char fuck[256];
-
-    fd = open("/dev/urandom", O_RDONLY);
-    fuck[255] = 0;
-    for (int i = 0; i < 255; i++)
-    {
-        read(fd, &z, 1);
-        if (z == 0)
-            break ;
-        if (z < 32)
-            z += 32;
-        std::cout << (char)z;
-    }
-    close(fd);
+    return newZombie(randStr());
 }
