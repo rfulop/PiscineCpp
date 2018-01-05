@@ -45,8 +45,8 @@ ZombieHorde::ZombieHorde(int N) : _n(N)
     _horde = new Zombie[N];
     while (i < N)
     {
-        _horde[i]._name = randStr();
-        _horde[i]._type = "Peon";
+        _horde[i].set_name(randStr());
+        _horde[i].set_type("Peon");
         ++i;
     }
 }
@@ -54,6 +54,7 @@ ZombieHorde::ZombieHorde(int N) : _n(N)
 ZombieHorde::~ZombieHorde(void)
 {
     delete [] _horde;
+    std::cout << "An horde has been decimated." << std::endl;
 }
 
 void ZombieHorde::announce(void)

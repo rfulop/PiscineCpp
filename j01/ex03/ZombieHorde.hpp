@@ -16,6 +16,7 @@
 #include <iomanip>
 #include <string>
 #include <iostream>
+#include "Zombie.hpp"
 
 class ZombieHorde
 {

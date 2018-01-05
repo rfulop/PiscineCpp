@@ -15,7 +15,7 @@
 
 int main()
 {
-	ZombieHorde horde[10];
+	ZombieHorde horde(10);
 	horde.announce();
     return 0;
 }

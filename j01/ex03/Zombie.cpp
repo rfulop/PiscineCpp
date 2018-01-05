@@ -32,3 +32,13 @@ void Zombie::announce(void) const
     std::cout << "<" << _name
     << " ("<< _type <<")> Braiiiiiiinnnssss..." << std::endl;
 }
+
+void Zombie::set_name(std::string name)
+{
+    _name = name;
+}
+
+void Zombie::set_type(std::string type)
+{
+    _type = type;
+}
