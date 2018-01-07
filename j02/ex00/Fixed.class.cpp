@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.class.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfulop <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: rfulop <rfulop@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 05:47:17 by rfulop            #+#    #+#             */
-/*   Updated: 2018/01/06 05:47:18 by rfulop           ###   ########.fr       */
+/*   Updated: 2018/01/07 02:28:19 by rfulop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.class.hpp"
 
-Fixed::Fixed(void) : _pt(0)
+const int Fixed::_fractionnalBit = 8;
+
+Fixed::Fixed(void) : _fixedPoint(0)
 {
     std::cout << "Default constuctor called" << std::endl;
-    _pt = 0;
 }
 
 Fixed::Fixed(const Fixed & cp)
@@ -32,13 +33,17 @@ Fixed::~Fixed(void)
 Fixed & Fixed::operator=(const Fixed & rhs)
 {
     std::cout << "Assignation operator called" << std::endl;
+    _fixedPoint = rhs.getRawBits();
+    return *this;
 }
 
-Fixed::getRawBits(void) const;
+int Fixed::getRawBits(void) const
 {
     std::cout << "getRawBits member fonction called" << std::endl;
+    return _fixedPoint;
 }
 
-Fixed::setrRawBits(int const raw)
+void Fixed::setRawBits(int const raw)
 {
+  _fixedPoint = raw;
 }
