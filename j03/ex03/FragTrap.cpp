@@ -58,6 +58,7 @@ FragTrap & FragTrap::operator=(const FragTrap & rhs)
     this->_rangedAttack = rhs._rangedAttack;
     this->_armorReduction = rhs._armorReduction;
     std::cout << "FR4G-TP " << this->_name << " has been reconstructed." << std::endl;
+    return *this;
 }
 
 void FragTrap::rangedAttack(std::string const & target) const

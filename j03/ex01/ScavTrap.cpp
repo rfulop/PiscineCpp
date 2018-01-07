@@ -6,7 +6,7 @@
 /*   By: rfulop <rfulop@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 05:47:13 by rfulop            #+#    #+#             */
-/*   Updated: 2018/01/07 14:03:59 by rfulop           ###   ########.fr       */
+/*   Updated: 2018/01/07 21:21:04 by rfulop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ ScavTrap & ScavTrap::operator=(const ScavTrap & rhs)
     this->_rangedAttack = rhs._rangedAttack;
     this->_armorReduction = rhs._armorReduction;
     std::cout << this->_name << " has been reconstructed." << std::endl;
+	return *this;
 }
 
 void ScavTrap::setName(std::string name)

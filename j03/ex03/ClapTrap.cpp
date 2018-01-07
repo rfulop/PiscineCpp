@@ -49,6 +49,7 @@ ClapTrap & ClapTrap::operator=(const ClapTrap & rhs)
     this->_rangedAttack = rhs._rangedAttack;
     this->_armorReduction = rhs._armorReduction;
     std::cout << "Fighter" << this->_name << " has been reconstructed." << std::endl;
+    return *this;
 }
 
 void ClapTrap::setName(std::string name)

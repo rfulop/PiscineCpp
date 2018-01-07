@@ -58,6 +58,7 @@ ScavTrap & ScavTrap::operator=(const ScavTrap & rhs)
     this->_rangedAttack = rhs._rangedAttack;
     this->_armorReduction = rhs._armorReduction;
     std::cout << "SC4V-TP " << this->_name << " has been reconstructed." << std::endl;
+    return *this;
 }
 
 void ScavTrap::rangedAttack(std::string const & target) const

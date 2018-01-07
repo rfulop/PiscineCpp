@@ -62,6 +62,7 @@ NinjaTrap & NinjaTrap::operator=(const NinjaTrap & rhs)
     this->_rangedAttack = rhs._rangedAttack;
     this->_armorReduction = rhs._armorReduction;
     std::cout << "NINJ4-TP " << this->_name << " has been reconstructed." << std::endl;
+    return *this;
 }
 
 void NinjaTrap::rangedAttack(std::string const & target) const
