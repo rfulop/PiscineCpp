@@ -1,41 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PlasmRifle.cpp                                     :+:      :+:    :+:   */
+/*   Enemy.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfulop <rfulop@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 05:47:13 by rfulop            #+#    #+#             */
-/*   Updated: 2018/01/08 12:57:06 by rfulop           ###   ########.fr       */
+/*   Updated: 2018/01/08 13:14:48 by rfulop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PlasmaRifle.hpp"
+#ifndef ENEMY_H
+#define ENEMY_H
 
-PlasmaRifle::PlasmaRifle(void)
-: AWeapon("Plasma Rifle", 5, 21)
-{
-}
+#include <string>
+#include <iostream>
 
-PlasmaRifle::PlasmaRifle(const PlasmaRifle & src)
-: AWeapon(src)
+class Enemy
 {
-    *this = src;
-}
+public:
+    Enemy(int hp, std::string const & type);
+    virtual ~Enemy(void);
+    Enemy(const Enemy & src);
+    Enemy & operator=(const Enemy & rhs);
 
-PlasmaRifle & PlasmaRifle::operator=(const PlasmaRifle & rhs)
-{
-    this->_name = rhs._name;
-    this->_damage = rhs._damage;
-    this->_apCost = rhs._apCost;
-    return *this;
-}
+    std::string getType(void) const;
+    int getHP(void) const;
 
-PlasmaRifle::~PlasmaRifle(void)
-{
-}
+    virtual void takeDamage(int damage);
 
-void PlasmaRifle::attack(void) const
-{
-    std::cout << "* piouuu piouuu piouuu *" << std::endl;
-}
+protected:
+    int _hp;
+    std::string _type;
+
+private:
+	Enemy(void);
+};
+
+#endif

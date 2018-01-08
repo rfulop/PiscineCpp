@@ -1,41 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PlasmRifle.cpp                                     :+:      :+:    :+:   */
+/*   Enemy.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfulop <rfulop@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 05:47:13 by rfulop            #+#    #+#             */
-/*   Updated: 2018/01/08 12:57:06 by rfulop           ###   ########.fr       */
+/*   Updated: 2018/01/08 13:33:57 by rfulop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PlasmaRifle.hpp"
+#include "Enemy.hpp"
 
-PlasmaRifle::PlasmaRifle(void)
-: AWeapon("Plasma Rifle", 5, 21)
+Enemy::Enemy(int hp, std::string const & type)
+: _hp(hp), _type(type)
 {
 }
 
-PlasmaRifle::PlasmaRifle(const PlasmaRifle & src)
-: AWeapon(src)
+Enemy::Enemy(const Enemy & src)
 {
     *this = src;
 }
 
-PlasmaRifle & PlasmaRifle::operator=(const PlasmaRifle & rhs)
+Enemy & Enemy::operator=(const Enemy & rhs)
 {
-    this->_name = rhs._name;
-    this->_damage = rhs._damage;
-    this->_apCost = rhs._apCost;
+    this->_hp = rhs._hp;
+    this->_type = rhs._type;
     return *this;
 }
 
-PlasmaRifle::~PlasmaRifle(void)
+Enemy::~Enemy(void)
 {
 }
 
-void PlasmaRifle::attack(void) const
+std::string Enemy::getType(void) const { return this->_type; }
+
+int Enemy::getHP(void) const { return this->_hp; }
+
+void Enemy::takeDamage(int damage)
 {
-    std::cout << "* piouuu piouuu piouuu *" << std::endl;
+    if (damage > 0)
+    {
+        this->_hp -= damage;
+    }
 }

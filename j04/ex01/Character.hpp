@@ -1,41 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AWeapon.hpp                                        :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfulop <rfulop@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 05:47:13 by rfulop            #+#    #+#             */
-/*   Updated: 2018/01/08 13:01:49 by rfulop           ###   ########.fr       */
+/*   Updated: 2018/01/08 14:04:46 by rfulop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AWEAPON_H
-#define AWEAPON_H
+#ifndef CHARACTER_H
+#define CHARACTER_H
 
 #include <string>
 #include <iostream>
+#include "Enemy.hpp"
+#include "AWeapon.hpp"
 
-class AWeapon
+class Character
 {
 public:
-    AWeapon(std::string const & name, int apcost, int damage);
-    ~AWeapon(void);
-    AWeapon(const AWeapon & src);
-    AWeapon & operator=(const AWeapon & rhs);
+    Character(std::string const & name);
+    ~Character(void);
+    Character(const Character & src);
+    Character & operator=(const Character & rhs);
 
     std::string getName(void) const;
-    int getAPCost(void) const;
-    int getDamage(void) const;
-    virtual void attack(void) const = 0;
+    int getAP(void) const;
+    AWeapon *getWeapon(void) const;
+
+    void recoverAP(void);
+    void equip(AWeapon *weapon);
+    void attack(Enemy *enemy);
 
 protected:
     std::string _name;
-    int _apCost;
-    int _damage;
-
+    int _ap;
+    AWeapon* _currentWeapon;
+    
 private:
-	AWeapon(void);
+	Character(void);
 };
+
+std::ostream & operator<<(std::ostream & o, const Character & rhs);
 
 #endif

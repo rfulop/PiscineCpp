@@ -1,41 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PlasmRifle.cpp                                     :+:      :+:    :+:   */
+/*   SuperMutant.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfulop <rfulop@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 05:47:13 by rfulop            #+#    #+#             */
-/*   Updated: 2018/01/08 12:57:06 by rfulop           ###   ########.fr       */
+/*   Updated: 2018/01/08 13:28:55 by rfulop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PlasmaRifle.hpp"
+#include "SuperMutant.hpp"
 
-PlasmaRifle::PlasmaRifle(void)
-: AWeapon("Plasma Rifle", 5, 21)
+SuperMutant::SuperMutant(void)
+: Enemy(170, "Super Mutant")
 {
+    std::cout << "Gaaah. Me want smash heads !" << std::endl;
 }
 
-PlasmaRifle::PlasmaRifle(const PlasmaRifle & src)
-: AWeapon(src)
+SuperMutant::SuperMutant(const SuperMutant & src)
+: Enemy(src)
 {
     *this = src;
 }
 
-PlasmaRifle & PlasmaRifle::operator=(const PlasmaRifle & rhs)
+SuperMutant & SuperMutant::operator=(const SuperMutant & rhs)
 {
-    this->_name = rhs._name;
-    this->_damage = rhs._damage;
-    this->_apCost = rhs._apCost;
+    this->_hp = rhs._hp;
+    this->_type = rhs._type;
     return *this;
 }
 
-PlasmaRifle::~PlasmaRifle(void)
+SuperMutant::~SuperMutant(void)
 {
+    std::cout << "Aaargh ..." << std::endl;
 }
 
-void PlasmaRifle::attack(void) const
+void SuperMutant::takeDamage(int damage)
 {
-    std::cout << "* piouuu piouuu piouuu *" << std::endl;
+    if (damage > 3)
+    {
+        _hp -= damage - 3;
+    }
 }

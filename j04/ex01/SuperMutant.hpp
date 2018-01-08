@@ -1,41 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PlasmRifle.cpp                                     :+:      :+:    :+:   */
+/*   SuperMutant.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfulop <rfulop@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 05:47:13 by rfulop            #+#    #+#             */
-/*   Updated: 2018/01/08 12:57:06 by rfulop           ###   ########.fr       */
+/*   Updated: 2018/01/08 13:28:43 by rfulop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PlasmaRifle.hpp"
+#ifndef SUPERMUTANT_H
+#define SUPERMUTANT_H
 
-PlasmaRifle::PlasmaRifle(void)
-: AWeapon("Plasma Rifle", 5, 21)
-{
-}
+#include "Enemy.hpp"
 
-PlasmaRifle::PlasmaRifle(const PlasmaRifle & src)
-: AWeapon(src)
+class SuperMutant : public Enemy
 {
-    *this = src;
-}
+public:
+    SuperMutant(void);
+    ~SuperMutant(void);
+    SuperMutant(const SuperMutant & src);
+    SuperMutant & operator=(const SuperMutant & rhs);
 
-PlasmaRifle & PlasmaRifle::operator=(const PlasmaRifle & rhs)
-{
-    this->_name = rhs._name;
-    this->_damage = rhs._damage;
-    this->_apCost = rhs._apCost;
-    return *this;
-}
+    virtual void takeDamage(int damage);
+};
 
-PlasmaRifle::~PlasmaRifle(void)
-{
-}
-
-void PlasmaRifle::attack(void) const
-{
-    std::cout << "* piouuu piouuu piouuu *" << std::endl;
-}
+#endif

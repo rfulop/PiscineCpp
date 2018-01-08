@@ -6,14 +6,14 @@
 /*   By: rfulop <rfulop@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 05:47:13 by rfulop            #+#    #+#             */
-/*   Updated: 2018/01/08 13:00:28 by rfulop           ###   ########.fr       */
+/*   Updated: 2018/01/08 14:12:07 by rfulop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PowerFist.hpp"
 
 PowerFist::PowerFist(void)
-: AWeapon("Power Fist", 50, 8)
+: AWeapon("Power Fist", 8, 50)
 {
 }
 
