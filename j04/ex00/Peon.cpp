@@ -6,7 +6,7 @@
 /*   By: rfulop <rfulop@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 05:47:13 by rfulop            #+#    #+#             */
-/*   Updated: 2018/01/08 12:13:21 by rfulop           ###   ########.fr       */
+/*   Updated: 2018/01/08 12:22:38 by rfulop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,4 @@ Peon & Peon::operator=(const Peon & rhs)
 void Peon::getPolymorphed(void) const
 {
     std::cout << this->_name << " has been turned into a pink pony !" << std::endl;
-}
-
-std::ostream & operator<<(std::ostream & o, const Peon & rhs)
-{
-    o << rhs.getName() << " says: \"Me busy, leave me alone !\"" << std::endl;
-    return o;
 }

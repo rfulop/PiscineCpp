@@ -6,7 +6,7 @@
 /*   By: rfulop <rfulop@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 05:47:13 by rfulop            #+#    #+#             */
-/*   Updated: 2018/01/08 12:09:19 by rfulop           ###   ########.fr       */
+/*   Updated: 2018/01/08 12:22:33 by rfulop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,5 @@ public:
 
     virtual void getPolymorphed(void) const;
 };
-
-std::ostream & operator<<(std::ostream & o, const Peon & rhs);
 
 #endif
