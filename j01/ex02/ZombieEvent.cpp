@@ -39,7 +39,6 @@ Zombie* ZombieEvent::newZombie(std::string name)
 
 std::string ZombieEvent::randStr(void)
 {
-    char z;
     uint64_t rdd;
     int fd;
     int size;

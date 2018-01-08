@@ -19,7 +19,6 @@
 class Victim
 {
 public:
-    Victim(void) = delete;
     Victim(std::string name);
     ~Victim(void);
     Victim(const Victim & src);
@@ -30,6 +29,9 @@ public:
 
 protected:
     std::string _name;
+
+private:
+    Victim(void);
 };
 
 std::ostream & operator<<(std::ostream & o, const Victim & rhs);

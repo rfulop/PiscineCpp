@@ -74,7 +74,7 @@ void ClapTrap::takeDamage(unsigned int amount)
         std::cout << this->_name << " is already dead." << std::endl;
     else
     {
-        if (amount - this->_armorReduction > this->_maxHitPoints)
+        if (amount - this->_armorReduction > (unsigned int )this->_maxHitPoints)
             this->_energyPoints -= this->_maxHitPoints;
         else
             this->_energyPoints -= amount - this->_armorReduction;
@@ -92,7 +92,7 @@ void ClapTrap::beRepaired(unsigned int amount)
         std::cout << this->_name << " is already full life." << std::endl;
     else
     {
-        if (amount + this->_energyPoints > this->_maxEnergyPoints)
+        if (amount + this->_energyPoints > (unsigned int)this->_maxEnergyPoints)
             this->_energyPoints = this->_maxEnergyPoints;
         else
             this->_energyPoints += amount;

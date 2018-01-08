@@ -6,7 +6,7 @@
 /*   By: rfulop <rfulop@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 05:47:13 by rfulop            #+#    #+#             */
-/*   Updated: 2018/01/07 13:07:57 by rfulop           ###   ########.fr       */
+/*   Updated: 2018/01/07 13:44:03 by rfulop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int main(void)
 {
     srand(time(NULL));
-    std::cout << "Robots initialization." << std::endl;
+    std::cout << "FRAG-TP initialization." << std::endl;
 
     std::cout << "Create first FRAG-TP." << std::endl;
     FragTrap lala("Lala");

@@ -13,6 +13,7 @@
 #ifndef FRAGTRAP_H
 #define FRAGTRAP_H
 
+#include <cstdlib>
 #include "ClapTrap.hpp"
 
 class FragTrap : public ClapTrap

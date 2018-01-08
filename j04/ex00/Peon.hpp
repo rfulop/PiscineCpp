@@ -20,13 +20,15 @@
 class Peon : public Victim
 {
 public:
-    Peon(void) = delete;
     Peon(std::string name);
     ~Peon(void);
     Peon(const Peon & src);
     Peon & operator=(const Peon & rhs);
 
     virtual void getPolymorphed(void) const;
+
+private:
+    Peon(void);
 };
 
 #endif

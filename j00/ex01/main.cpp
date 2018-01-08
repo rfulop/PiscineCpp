@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "Contact.class.hpp"
+#include <cstdlib>
+#include <limits>
 
 std::string take_line(std::string field)
 {

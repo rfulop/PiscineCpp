@@ -39,5 +39,6 @@ int main(void)
 
     Pony *pony2 = ponyOnTheHeap("Lulu");
 
+	(void)pony2;
     return (0);
 }

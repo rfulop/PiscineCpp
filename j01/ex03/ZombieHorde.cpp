@@ -21,7 +21,6 @@ const char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
 std::string ZombieHorde::randStr(void)
 {
-    char z;
     uint64_t rdd;
     int fd;
     int size;

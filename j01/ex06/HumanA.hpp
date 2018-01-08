@@ -23,8 +23,8 @@ public:
     HumanA (std::string name, Weapon &weapon);
     void attack(void) const;
 private:
-    Weapon *_weapon;
     std::string _name;
+    Weapon *_weapon;
 };
 
 #endif
