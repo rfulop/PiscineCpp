@@ -6,7 +6,7 @@
 /*   By: rfulop <rfulop@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 05:47:13 by rfulop            #+#    #+#             */
-/*   Updated: 2018/01/09 04:41:42 by rfulop           ###   ########.fr       */
+/*   Updated: 2018/01/09 10:10:53 by rfulop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,21 @@ Form & Form::operator=(const Form & rhs)
     return *this;
 }
 
+void Form::action(void) const {}
+
+void Form::execute(const Bureaucrat & executor) const
+{
+    if (!this->_isSigned)
+        throw FormNotSigned();
+    else if (executor.getGrade() > this->_execRequiredGrade)
+        throw GradeTooHighException();
+    else
+    {
+        std::cout << executor.getName() << " executes " << this->_name << "." << std::endl;
+        this->action();
+    }
+}
+
 void Form::beSigned(Bureaucrat & bureaucrat)
 {
     if (this->_isSigned)
@@ -64,7 +79,7 @@ int Form::getSignRequiredGrade(void) const { return this->_signRequiredGrade; }
 std::ostream & operator<<(std::ostream & o, const Form & rhs)
 {
     o << "Form \"" << rhs.getName() << "\" requires grade " << rhs.getExecRequiredGrade()
-    << " for excecution, and grade " << rhs.getSignRequiredGrade() << " to be signed.";
+    << " for execution, and grade " << rhs.getSignRequiredGrade() << " to be signed.";
     if (rhs.getIsSigned())
         o << " It's signed." << std::endl;
     else
@@ -110,4 +125,24 @@ Form::GradeTooLowException & Form::GradeTooLowException::operator=(Form::GradeTo
 const char * Form::GradeTooLowException::what() const throw()
 {
     return "Form's grade too low.";
+}
+
+Form::FormNotSigned::FormNotSigned(void) {}
+
+Form::FormNotSigned::~FormNotSigned(void) throw() {}
+
+Form::FormNotSigned::FormNotSigned(FormNotSigned const & src)
+{
+    *this = src;
+}
+
+Form::FormNotSigned & Form::FormNotSigned::operator=(Form::FormNotSigned const & rhs)
+{
+    std::exception::operator=(rhs);
+    return (*this);
+}
+
+const char * Form::FormNotSigned::what() const throw()
+{
+    return "Form has not been signed.";
 }

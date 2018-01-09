@@ -6,7 +6,7 @@
 /*   By: rfulop <rfulop@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 05:47:13 by rfulop            #+#    #+#             */
-/*   Updated: 2018/01/09 04:36:26 by rfulop           ###   ########.fr       */
+/*   Updated: 2018/01/09 10:11:07 by rfulop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,19 @@ void Bureaucrat::signForm(Form & form)
     catch (std::exception & e)
     {
         std::cout << this->_name << " cannot sign \"" << form.getName() << "\" because "
+        << e.what() << std::endl;
+    }
+}
+
+void Bureaucrat::executeForm(Form const & form)
+{
+    try
+    {
+        form.execute(*this);
+    }
+    catch (std::exception & e)
+    {
+        std::cout << this->_name << " cannot execute \"" << form.getName() << "\" because "
         << e.what() << std::endl;
     }
 }
