@@ -77,16 +77,6 @@ public:
         virtual const char *what() const throw();
     };
 
-    // class GradeTooHighException : public std::exception
-    // {
-    // public:
-    //     GradeTooHighException();
-    //     ~GradeTooHighException() throw();
-    //     GradeTooHighException(const GradeTooHighException & rhs);
-    //     GradeTooHighException & operator=(const GradeTooHighException & src);
-    //     virtual const char *what() const throw();
-    // };
-
 private:
     Intern  *_intern;
     Bureaucrat *_signer;
