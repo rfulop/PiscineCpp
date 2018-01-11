@@ -34,9 +34,6 @@ void swap(T & a, T & b)
     a = tmp;
 }
 
-
-
-
 int main(int argc, char **argv)
 {
     if (argc == 3)
@@ -75,5 +72,7 @@ int main(int argc, char **argv)
         std::cout << "Max = " << max(char_a, char_b) << std::endl;
         std::cout << "Min = " << min(char_a, char_b) << std::endl;
     }
+	else
+		std::cout << "Usage : ./whatever arg1 arg2" << std:endl;
     return 0;
 }
